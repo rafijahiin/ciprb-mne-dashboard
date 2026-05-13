@@ -1,8 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from tracker.models import FistulaCase
 from mpdsr.models import MPDSREvent
 
 
+def landing_page(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard_main')
+    return render(request, 'dashboard/landing.html')
+
+
+@login_required
 def dashboard_main(request):
     # Data for Fistula Progress Ring
     fistula_operated = FistulaCase.objects.filter(
