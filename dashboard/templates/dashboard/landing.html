@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIPRB M&E Intelligence Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 500: '#10b981', 600: '#059669' },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+    <nav class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-emerald-600">CIPRB</span>
+                </div>
+                <div>
+                    <a href="{% url 'login' %}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-emerald-600 hover:bg-emerald-700">
+                        Portal Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="mt-16 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-32">
+        <div class="text-center">
+            <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                <span class="block xl:inline">CIPRB M&E</span>
+                <span class="block text-emerald-600">Intelligence Platform</span>
+            </h1>
+            <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                A unified digital framework for tracking MPDSR actions, monitoring Fistula surgeries, and driving data-informed health interventions in rural Bangladesh.
+            </p>
+            <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+                <div class="rounded-md shadow">
+                    <a href="{% url 'login' %}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 md:py-4 md:text-lg md:px-10">
+                        Access Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="py-16 bg-gray-50 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mt-10">
+                <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+                    <div class="relative">
+                        <dt><p class="text-lg leading-6 font-medium text-gray-900">Real-time KoboToolbox Ingestion</p></dt>
+                        <dd class="mt-2 text-base text-gray-500">Seamlessly process form data from field workers using automated, secure webhooks mapping straight into the platform.</dd>
+                    </div>
+                    <div class="relative">
+                        <dt><p class="text-lg leading-6 font-medium text-gray-900">MPDSR & Fistula Tracking</p></dt>
+                        <dd class="mt-2 text-base text-gray-500">Interactive dashboards built with Tailwind CSS and Chart.js to visually monitor surgery outcomes and track the data-to-action gap.</dd>
+                    </div>
+                    <div class="relative">
+                        <dt><p class="text-lg leading-6 font-medium text-gray-900">AI-Driven Policy Newsletters</p></dt>
+                        <dd class="mt-2 text-base text-gray-500">Harnessing Google Gemini to automatically generate compelling advocacy narratives from live monthly statistics.</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
