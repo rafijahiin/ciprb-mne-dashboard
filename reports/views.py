@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from pptx import Presentation
 from .ai_utils import generate_newsletter_narrative
 from .models import MonthlyNewsletter
@@ -12,6 +13,7 @@ from mpdsr.models import MPDSREvent
 from weasyprint import HTML
 
 
+@login_required
 def export_pdf(request):
     fistula_operated = FistulaCase.objects.filter(
         referral_status='OPERATED').count()
@@ -36,6 +38,7 @@ def export_pdf(request):
     return response
 
 
+@login_required
 def export_ppt(request):
     prs = Presentation()
 
@@ -118,6 +121,7 @@ def export_ppt(request):
     return response
 
 
+@login_required
 def generate_newsletter(request):
     now = timezone.now()
     month = now.month
