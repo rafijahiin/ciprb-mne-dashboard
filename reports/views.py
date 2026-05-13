@@ -1,23 +1,27 @@
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from pptx import Presentation
+from .ai_utils import generate_newsletter_narrative
+from .models import MonthlyNewsletter
+from django.utils import timezone
+from io import BytesIO
+from pptx.util import Inches, Pt
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from tracker.models import FistulaCase
 from mpdsr.models import MPDSREvent
 from weasyprint import HTML
-from pptx import Presentation
-from pptx.util import Inches, Pt # noqa
-from io import BytesIO
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.utils import timezone
-from .models import MonthlyNewsletter
-from .ai_utils import generate_newsletter_narrative
+
 
 @login_required
 def export_pdf(request):
-    fistula_operated = FistulaCase.objects.filter(referral_status='OPERATED').count()
+    fistula_operated = FistulaCase.objects.filter(
+        referral_status='OPERATED').count()
     total_deaths = MPDSREvent.objects.count()
-    implemented = MPDSREvent.objects.filter(action_status='IMPLEMENTED').count()
-    action_gap_percent = (implemented / total_deaths * 100) if total_deaths > 0 else 0
+    implemented = MPDSREvent.objects.filter(
+        action_status='IMPLEMENTED').count()
+    action_gap_percent = (implemented / total_deaths *
+                          100) if total_deaths > 0 else 0
 
     context = {
         'fistula_operated': fistula_operated,
@@ -32,6 +36,7 @@ def export_pdf(request):
     response = HttpResponse(pdf, content_type='application/pdf')
     response['Content-Disposition'] = 'inline; filename="report.pdf"'
     return response
+
 
 @login_required
 def export_ppt(request):
@@ -56,7 +61,8 @@ def export_ppt(request):
     tf = body_shape.text_frame
     tf.text = "Surgery Outcomes Overview"
 
-    fistula_operated = FistulaCase.objects.filter(referral_status='OPERATED').count()
+    fistula_operated = FistulaCase.objects.filter(
+        referral_status='OPERATED').count()
     fistula_total = FistulaCase.objects.count()
 
     p = tf.add_paragraph()
@@ -89,8 +95,10 @@ def export_ppt(request):
     tf.text = "Data-to-Action Gap Analysis"
 
     total_deaths = MPDSREvent.objects.count()
-    implemented = MPDSREvent.objects.filter(action_status='IMPLEMENTED').count()
-    action_gap_percent = (implemented / total_deaths * 100) if total_deaths > 0 else 0
+    implemented = MPDSREvent.objects.filter(
+        action_status='IMPLEMENTED').count()
+    action_gap_percent = (implemented / total_deaths *
+                          100) if total_deaths > 0 else 0
 
     p = tf.add_paragraph()
     p.text = f"Total MPDSR Events: {total_deaths}"
@@ -101,7 +109,8 @@ def export_ppt(request):
     p.level = 1
 
     # Save to response
-    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.presentationml.presentation')
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.presentationml.presentation')
     response['Content-Disposition'] = 'attachment; filename="report.pptx"'
 
     output = BytesIO()
@@ -110,6 +119,7 @@ def export_ppt(request):
     response.write(output.read())
 
     return response
+
 
 @login_required
 def generate_newsletter(request):
