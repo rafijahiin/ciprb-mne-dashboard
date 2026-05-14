@@ -12,7 +12,10 @@ class KoboIngestView(APIView):
         # 1. Secure the endpoint by checking the HTTP_X_KOBO_WEBHOOK_SECRET
         secret = request.META.get('HTTP_X_KOBO_WEBHOOK_SECRET')
         # Using 'test_secret' as a fallback for local testing
-        expected_secret = os.environ.get('KOBO_WEBHOOK_SECRET', 'test_secret')
+        expected_secret = os.environ.get('KOBO_WEBHOOK_SECRET')
+        if not expected_secret:
+            from django.core.exceptions import ImproperlyConfigured
+            raise ImproperlyConfigured("KOBO_WEBHOOK_SECRET environment variable is required.")
 
         if secret != expected_secret:
             return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)

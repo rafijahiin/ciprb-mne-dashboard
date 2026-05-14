@@ -1,14 +1,7 @@
-import os
+with open('baseline/tests.py', 'r') as f:
+    content = f.read()
 
-files = ['dashboard/views.py', 'mpdsr/views.py', 'reports/views.py']
+content = content.replace("self.secret = 'test_secret'", "self.secret = 'test_secret'\n        os.environ['KOBO_WEBHOOK_SECRET'] = self.secret")
 
-for file in files:
-    with open(file, 'r') as f:
-        content = f.read()
-
-    # remove excessive blank lines
-    while '\n\n\n' in content:
-        content = content.replace('\n\n\n', '\n\n')
-
-    with open(file, 'w') as f:
-        f.write(content)
+with open('baseline/tests.py', 'w') as f:
+    f.write(content)
