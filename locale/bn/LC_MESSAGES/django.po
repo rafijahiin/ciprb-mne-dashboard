@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-13 17:43+0000\n"
+"POT-Creation-Date: 2026-05-14 06:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: ciprb/settings.py:110
 msgid "English"
 msgstr ""
@@ -24,5 +25,43 @@ msgstr ""
 #: ciprb/settings.py:111
 msgid "Bangla"
 msgstr ""
+
+#: dashboard/templates/dashboard/main.html:7
+msgid "CIPRB M&E Dashboard"
+msgstr "সিআইপিআরবি এমএন্ডই ড্যাশবোর্ড"
+
+#: dashboard/templates/dashboard/main.html:36
+msgid "Real-time Reporting Dashboard"
+msgstr "রিয়েল-টাইম রিপোর্টিং ড্যাশবোর্ড"
+
+#: dashboard/templates/dashboard/main.html:50
+msgid "Fistula Surgery Targets"
+msgstr "ফিস্টুলা সার্জারি লক্ষ্যমাত্রা"
+
+#: dashboard/templates/dashboard/main.html:62
+msgid "MPDSR Deaths by District"
+msgstr "জেলা ভিত্তিক এমপিডিএসআর মৃত্যু"
+
+#: dashboard/templates/dashboard/main.html:67
+msgid "AI Newsletter"
+msgstr "এআই নিউজলেটার"
+
+#: dashboard/templates/dashboard/main.html:68
+msgid "Generate Now"
+msgstr "এখনই তৈরি করুন"
+
+#: dashboard/templates/dashboard/main.html:72
 msgid "Data-to-Action Gap"
 msgstr "ডাটা-টু-অ্যাকশন গ্যাপ"
+
+#: dashboard/templates/dashboard/main.html:83
+msgid "Lagging Behind Districts"
+msgstr "পিছিয়ে পড়া জেলাগুলো"
+
+#: dashboard/templates/dashboard/main.html:110
+msgid "Recent Day-to-Day Activities"
+msgstr "সাম্প্রতিক দৈনন্দিন কার্যক্রম"
+
+#: dashboard/templates/dashboard/main.html:141
+msgid "MPDSR Action Tracking"
+msgstr "এমপিডিএসআর অ্যাকশন ট্র্যাকিং"

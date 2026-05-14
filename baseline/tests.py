@@ -14,6 +14,7 @@ class KoboIngestTests(TestCase):
         self.url = reverse('kobo-ingest')
         self.secret = 'test_secret'
         os.environ['KOBO_WEBHOOK_SECRET'] = self.secret
+        os.environ['KOBO_WEBHOOK_SECRET'] = self.secret
 
     def test_unauthorized(self):
         response = self.client.post(self.url, {}, format='json')
